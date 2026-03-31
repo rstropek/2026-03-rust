@@ -1,7 +1,7 @@
 mod tictactoe;
 
 use std::io::{self, BufRead, Write};
-use tictactoe::{Game, MoveError};
+use tictactoe::{Game, GameState};
 
 fn main() {
     let mut game = Game::new();
@@ -29,14 +29,18 @@ fn main() {
         };
 
         match game.make_move(coord) {
-            Ok(Some(winner)) => {
+            Ok(GameState::Won(winner)) => {
                 println!("{game}");
                 println!("Player {winner} wins!");
                 break;
             }
-            Ok(None) => {}
-            Err(MoveError::AlreadyOccupied) => println!("Error: That field is already occupied"),
-            Err(MoveError::AlreadyWinner) => println!("Error: The game is already over"),
+            Ok(GameState::Draw) => {
+                println!("{game}");
+                println!("It's a draw!");
+                break;
+            }
+            Ok(GameState::InProgress) => {}
+            Err(e) => println!("Error: {e}"),
         }
     }
 }

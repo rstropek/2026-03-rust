@@ -5,3 +5,7 @@ edition = "2024"
 
 [dependencies]
 rand = "0.10"
+
+[dev-dependencies]
+pretty_assertions = "1.4.1"
+rstest = "0.26.1"
