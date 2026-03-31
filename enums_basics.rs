@@ -47,4 +47,17 @@ fn main() {
     {
         println!("The hotel room is occupied by {} and will be under maintenance for {} more days.", c.name, days);
     }
+    
+    let my_option: Option<i32> = None;
+    let my_option: Option<i32> = Some(42);
+    
+    let parse_result = "42".parse::<i32>();
+    match &parse_result {
+        Ok(value) => println!("Parsed value: {}", value),
+        Err(e) => println!("Failed to parse: {}", e),
+    }
+    
+    if let Ok(value) = &parse_result { //"42".parse::<i32>() {
+        println!("Parsed value: {}", value);
+    }
 }
