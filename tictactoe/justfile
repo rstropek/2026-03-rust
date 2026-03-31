@@ -1,0 +1,10 @@
+check:
+    cargo check
+
+clippy:
+    cargo clippy
+
+fmt:
+    cargo fmt --check
+
+check-all: check clippy fmt
